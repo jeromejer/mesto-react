@@ -13,7 +13,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({isOpen: false});
+  const [selectedCard, setSelectedCard] = React.useState({ isOpen: false });
 
 
   function handleEditAvatarClick() {
@@ -32,11 +32,11 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard({isOpen: false});
+    setSelectedCard({ isOpen: false });
   }
 
-  function handleCardClick({link, title, isOpen}) {
-    setSelectedCard({link, title, isOpen: !isOpen});
+  function handleCardClick({ link, name, isOpen }) {
+    setSelectedCard({ link, name, isOpen: !isOpen });
   }
 
 
@@ -44,11 +44,11 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
-      <PopupUpdateAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
-      <PopupEditProfile isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/>
-      <PopupAddCard isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}/>
-      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
+      <PopupUpdateAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} buttonText="Сохранить"/>
+      <PopupEditProfile isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} buttonText="Сохранить"/>
+      <PopupAddCard isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} buttonText="Сохранить"/>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       <Footer />
     </div>
   );

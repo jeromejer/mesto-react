@@ -3,7 +3,7 @@ import api from "../utils/Api";
 import Card from './Card'
 
 function Main(props) {
-    const {onEditProfile, onAddPlace, onEditAvatar, onCardClick} = props;
+    const { onEditProfile, onAddPlace, onEditAvatar, onCardClick } = props;
     const [userName, setUserName] = React.useState('');
     const [userDescription, setUserDescription] = React.useState('');
     const [userAvatar, setUserAvatar] = React.useState('');
@@ -11,27 +11,33 @@ function Main(props) {
 
     React.useEffect(() => {
         api.getUserData()
-        .then(({name, about, avatar}) => {
-            setUserName(name);
-            setUserDescription(about);
-            setUserAvatar(avatar)
-        })
+            .then(({ name, about, avatar }) => {
+                setUserName(name);
+                setUserDescription(about);
+                setUserAvatar(avatar)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }, [])
 
     React.useEffect(() => {
         api.getCardsData()
-        .then((data) => {
-            setCards(data)
-        })
+            .then((data) => {
+                setCards(data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }, [])
 
 
 
-    return(
-       <main>
-        <section className="profile">
+    return (
+        <main>
+            <section className="profile">
                 <picture className="profile__avatar" onClick={onEditAvatar}>
-                <div alt="Аватар" className="profile__avatar-img" style={{ backgroundImage: `url(${userAvatar})` }}></div>
+                    <div className="profile__avatar-img" style={{ backgroundImage: `url(${userAvatar})` }}></div>
                 </picture>
                 <div className="profile__info">
                     <div className="profile__description">
@@ -45,16 +51,16 @@ function Main(props) {
                     <button type="button" className="profile__add-button" onClick={onAddPlace}>
                     </button>
                 </div>
-        </section>
-        <section className="elements">
-        {cards.map((card) => {
-            return (
-                <Card name={card.name} link={card.link} likes={card.likes} key={card._id} onCardClick={onCardClick} card={card}/>
-            )
-        })}
-        </section>
-            
-        </main> 
+            </section>
+            <section className="elements">
+                {cards.map((card) => {
+                    return (
+                        <Card name={card.name} link={card.link} likes={card.likes} key={card._id} onCardClick={onCardClick} card={card} />
+                    )
+                })}
+            </section>
+
+        </main>
     )
 }
 
