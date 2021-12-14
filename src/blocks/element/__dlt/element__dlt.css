@@ -7,11 +7,15 @@
   background-image: url('/src/images/delete.svg');
   background-repeat: no-repeat;
   background-position: center;
-  display: block;
+  display: none;
   transition: .2s;
   position: absolute;
   right: 15px;
   top: 18px;
+}
+
+.element__dlt_active{
+  display: block;
 }
 
 .element__dlt:hover {
