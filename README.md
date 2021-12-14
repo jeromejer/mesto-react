@@ -1,2 +1,2 @@
 Проект создан на React.js
-https://jeromejer.github.io/mesto-react/index.html
+https://jeromejer.github.io/mesto-react/
