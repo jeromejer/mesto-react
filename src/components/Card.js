@@ -31,7 +31,6 @@ function Card(props) {
     }
 
     return (
-        <>
             <article className="element">
                 <img className="element__img" alt={props.name} src={props.link} onClick={handleClick} />
                 <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick}>
@@ -45,7 +44,6 @@ function Card(props) {
                     </div>
                 </div>
             </article>
-        </>
     )
 }
 

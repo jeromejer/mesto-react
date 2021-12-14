@@ -8,7 +8,6 @@ function Main(props) {
 
 
     return (
-        <CurrentUserContext.Provider value={currentUser}>
         <main>
             <section className="profile">
                 <picture className="profile__avatar" onClick={onEditAvatar}>
@@ -30,13 +29,20 @@ function Main(props) {
             <section className="elements">
                 {cards.map((card) => {
                     return (
-                        <Card name={card.name} link={card.link} likes={card.likes} key={card._id} onCardClick={onCardClick} card={card} onCardLike={onCardLike} onCardDelete={onCardDelete}/>
+                        <Card 
+                            name={card.name} 
+                            link={card.link} 
+                            likes={card.likes} 
+                            key={card._id} 
+                            onCardClick={onCardClick} 
+                            card={card} 
+                            onCardLike={onCardLike} 
+                            onCardDelete={onCardDelete}/>
                     )
                 })}
             </section>
 
         </main>
-        </CurrentUserContext.Provider>
     )
 }
 
